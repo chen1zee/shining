@@ -57,6 +57,17 @@ footer .container .contactUs{
 }
 /*页脚 footer  结束 */
 
+/*小于700px  时 改变一些padding*/
+@media screen and (max-width: 700px){
+	footer{
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	footer .container .contactUs{
+		margin-bottom: 40px;
+	}
+}
+
 /*最底下 copyRight*/
 .copyRight{
 	line-height: 4rem;

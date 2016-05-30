@@ -9,7 +9,7 @@ section .container-fluid.summary{
 section .summary .title{
 	width: 49%;
 	margin: 0 auto ;
-	min-width: 300px;
+	min-width: 320px;
 	margin-bottom: 68px;
 }
 section .summary .swipe-banner{
@@ -92,7 +92,7 @@ section .work-wrap .img-container{
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-	padding: 12%;
+	padding: 8.5%;
 	background-color: rgba(0,0,0,0.5);
 	opacity: 0;
 	transition: 1.5s;
@@ -105,6 +105,7 @@ section .work-wrap .img-container{
 	background-position: center;
 	background-repeat: no-repeat;
 	opacity: 0.7;
+	background-size: 50px;
 }
 
 .img-container li .work:hover a{
@@ -141,5 +142,15 @@ section .work-wrap .img-container{
 	margin-left: -20px;
 }
 
+
+/*小于 766px 时 改变样式*/
+@media screen and (max-width: 766px){
+	section .summary.container-fluid{
+		padding-top: 130px;
+	}
+	section .summary .title{
+		margin-bottom: 30px;
+	}
+}
 
 /* 正文section 结束 

@@ -24,4 +24,18 @@ section{
 	margin: 0 auto 40px;
 }
 
+/* 小于993px 改变样式*/
+@media screen and (max-width: 993px){
+	.aboutUs img:nth-of-type(2){
+		margin-bottom: 50px;
+	}
+	section{
+		padding-bottom: 40px;
+	}	
+}
+@media screen and (max-width: 700px){
+	section .aboutUs{
+		padding-top: 80px;
+	}
+}
 /* 正文 section 结束*/
