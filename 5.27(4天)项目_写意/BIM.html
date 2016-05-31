@@ -149,6 +149,7 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="bootStrap_dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	$(function () {
 		// 鼠标滚轮换屏事件
 
 		// 获取每个页面坐标
@@ -159,39 +160,67 @@
 			 /* body... */ 
 		});
 		var i = 0;//根据i来判定跳转
-		var nowP = 0;//现在视窗显示的index
-		var nowS = 0;//滚动完的top值
-		var prevS = 0;//滚动前top值
-		$(window).on("scroll",function tab() {
-			// 检测滚动时，是否读完本屏内容，并跳转
-			nowS = $(document).scrollTop();
-			var windowH = $(window).height();
-			if (nowS - prevS > 0) {
-				if ((nowS + windowH) > pos[i + 1]) {
+		$("html,body").scrollTop(0);//初步加载后跳转到顶端
+
+		// 给jquery 元素添加方法
+		$.fn.extend({
+			mousewheel:function (up,down) {
+				$(this).get(0).onmousewheel = fn;
+				if (window.addEventListener) {
+					$(this).get(0).addEventListener("DOMMouseScroll",fn,false);
+				}
+				function fn(e) {
+					var e = e || window.event;
+					e.preventDefault();
+					if (e.wheelDelta < 0 || e.detail > 0) {
+						down();
+					}else {
+						up();
+					}
+					return false;
+					 /* body... */ 
+				}
+				 /* body... */ 
+			}
+		});
+		function down() {				
+				while($(document).scrollTop() >= pos[i]){
 					i++;
 				}
-			}else if (nowS - prevS < 0) {
-				if (nowS  < pos[i]) {
-					i--;
+				if (i >= pos.length - 1) {
+					i = pos.length - 1;
 				}
+				console.log(i);
+				$("html,body").stop().animate({
+					scrollTop:(pos[i]),
+				},800);
+			
+			 // body...  
+		}
+		function up() {
+			while($(document).scrollTop() <= pos[i]){
+				i--;
+			}
+			if (i < 0) {
+				i = 0;
 			}
 			console.log(i);
-			$(window).off("scroll");
-			setTimeout(function () {
-				$(window).on("scroll",tab);
-				 /* body... */ 
-			}, 1000);
-			$("html,body").animate({
-				scrollTop:(pos[i] || pos [i - 1]),
-			},800,function () {
-				prevS = $(document).scrollTop();
-				 /* body... */ 
-			});
-			prevS = nowS;
+			$("html,body").stop().animate({
+				scrollTop:pos[i],
+			},800);
 			 /* body... */ 
-		});
-
-
+		}
+		$(window).mousewheel(up,down);
+		//放回顶端按钮
+		$(".goTop a").on("click",function () {
+			i = 0;
+			$("html,body").stop().animate({
+				scrollTop:pos[i],
+			},800);
+			 /* body... */ 
+		})
+		 /* body... */ 
+	});
 
 	</script>
 </body>

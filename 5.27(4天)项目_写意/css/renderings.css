@@ -69,8 +69,13 @@ section .work-wrap .img-container{
 }
 .img-container li{
 	width: 100%;
+	margin: 0 auto;
 	padding-bottom: 10px;
-	overflow: hidden;	
+	padding-left: 3%;
+	overflow: hidden;
+}
+.img-container p{
+	text-align: center;
 }
 .img-container li .work{
 	overflow: hidden;
@@ -131,26 +136,37 @@ section .work-wrap .img-container{
 .scale-mask.active{
 	display: block;
 }
-
+.work-wrap .goTop{
+	position: fixed;
+	bottom: 50px;
+	left: 50%;
+	z-index: 10;
+}
 .work-wrap .goTop img{
 	width: 5%;
 	height: auto;
-	min-width: 40px;
+	min-width: 60px;
 	position: absolute;
-	bottom: 0;
-	left: 50%;
-	margin-left: -20px;
+	margin-left: -30px;
 }
 
 
 /*小于 766px 时 改变样式*/
-@media screen and (max-width: 766px){
+@media screen and (max-width: 771px){
 	section .summary.container-fluid{
 		padding-top: 130px;
 	}
 	section .summary .title{
 		margin-bottom: 30px;
 	}
+	.img-container li .work{
+		width: 70%;
+		margin-left: 15%;
+	}
+	.img-container li .work img{
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
 }
-
 /* 正文section 结束 
