@@ -133,6 +133,7 @@ section .container-fluid.more-video{
 	overflow: hidden;
 	width: 5%;
 	min-width: 50px;
+	max-width: 60px;
 }
 .goTop a img{
 	width: 100%;

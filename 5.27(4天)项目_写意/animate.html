@@ -192,10 +192,11 @@
 			},500);
 			 /* body... */ 
 		});
-		$("section a").on("click",function () {
-			$(this).siblings("video").get(0).play();
+		$(".play-contain").on("click",function () {
+			$(this).children("video").get(0).play();
+			$(this).children("a").fadeToggle("slow","linear");
 			 /* body... */ 
-		})
+		});
 		 /* body... */ 
 	});
 
